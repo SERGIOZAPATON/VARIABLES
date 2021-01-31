@@ -12,95 +12,95 @@
 	</head>
 	
 	<body>
+		<?php
+			if(!isset($_GET['a'])) $_GET['a']=102;
+			if(!isset($_GET['b'])) $_GET['b']=2;
+			if(!isset($_GET['c'])) $_GET['c']=1;
+		?>
 		<CENTER> 
 				<b>
 					<H1>
-						PROBLEMA PROPUESTO
+						<u>PERSONAS EN UNA FIESTA</u>
 					</H1>
-				</b>
-		</CENTER> 
-
-		<CENTER>
+				</b> 
 				<p>
 					En una fiesta hay un total de <strong>102 personas</strong> entre mujeres, hombres y niños. Calcular cuántos hay de cada grupo sabiendo que las 
 					mujeres asistentes son el doble de hombres y el número de niños es igual a la suma de mujeres y hombres 
 				</p>
-		</CENTER>
-
-		<CENTER> 
+		
+			<img src="FIESTA.jpg" width="500"> 
+		
 				<b> 
 					<p>
-					SOLUCIÓN 
+						<u>SOLUCIÓN</u>
 					</p>
-				</b> 
-		</CENTER> 
-
-		<CENTER> 
+				</b>  
 				<p/>	
 					Para calcular el número de hombres, mujeres y niños introduce el número total de personas, el número de hombres por cada mujer
 					y el número de adultos <em>(mujeres más hombres)</em> por cada niño.
 				</p>
+				<P>
+					<em>
+						Por defecto aparecen las casillas rellenas con los datos del enunciado del problema Nº total de personas= 102, 
+						Nº de hombres por mujer= 2 y Nº de adultos por niño= 1,	pero puedes cambiarlo por tus datos.
+						<br> Nada más lo cambies se calculará en javascrip, ya que este lenguaje lo	ejecuta el navegador (frontend). 
+						Si quieres calcularlo en php tienes que pulsar el botón "calcular en php" ya que al ser un lenguaje que ejecuta el
+						servidor (backend) tenemos que enviar los datos al servidor para que realice los cálculos.
+					</em>
+				</P>
 		</CENTER>
 
-		<div style=" padding:10px; background-color:blue;">
-				<center>
-						<b>
-							<H2>
-								JavaScript
-							</H2>
-						</b>
-				</center>
-				
-		<form>
-			<div>
-				<input id='a' name="a" placeholder='numero total de personas' onkeyup="calcular()" value="<?=$_GET['a']?>"/> 
-			</div>
-			
-			<div>
-				<input id='b' name="b" placeholder='nº de hombres por mujer' onkeyup="calcular()" value="<?=$_GET['b']?>"/>
-			</div>
-			
-			<div>
-				<input id='c' name="c" placeholder='nº adultos por niño' onkeyup="calcular()" value="<?=$_GET['c']?>"/>
-			</div>
-			
-			<button onclick="calcular()")> Calcular en php </button>
-		</form>
-
-
-		<center>
+		<div style=" padding:10px; background-color:#2E9AFE;">
+			<center>
+				<form>
+					<p>
+						Nº total de personas : <input id='a' name="a" placeholder='numero total de personas' onkeyup="calcular()" value="<?=$_GET['a']?>"/> 
+					</p>
+					
+					<p>
+						Nº hombres por mujer <input id='b' name="b" placeholder='nº de hombres por mujer' onkeyup="calcular()" value="<?=$_GET['b']?>"/>
+					</p>
+					
+					<p>
+						Nº de adultos por niño <input id='c' name="c" placeholder='nº adultos por niño' onkeyup="calcular()" value="<?=$_GET['c']?>"/>
+					</p>
+					<button onclick="calcular()")> Calcular en php </button>
+				</form>
+			</center>
+		</div>
+		<div style=" padding:10px; background-color:#0489B1;">
+			<center>
 				<b>
 					<H2>
-						<div 
-							id='resultado 1'
-							style=" padding:10px;	background-color:lightblue;">
-						</div>
+						<u>JavaScript</u>
 					</H2>
 				</b>
-		</center>
-
-		<center>
 				<b>
-					<H2>
-						<div 
-							id='resultado 2'
-							style=" padding:10px;	background-color:lightblue;">
-						</div>
-					</H2>
-				</b>
-		</center>
-
-		<center>
+						<H3>
+							<div 
+								id='resultado 1'style=" padding:10px;	background-color:lightblue;">
+							</div>
+						</H3>
+					</b>
+			
+					<b>
+						<H3>
+							<div 
+								id='resultado 2'
+								style=" padding:10px;	background-color:lightblue;">
+							</div>
+						</H3>
+					</b>
+			
 				<b>
-					<H2>
+					<H3>
 						<div 
 							id='resultado 3'
 							style=" padding:10px;	background-color:lightblue;">
 						</div>
-					</H2>
+					</H3>
 				</b>
-		</center>
-
+			</center>
 		</div>
 
 		<script>
@@ -113,53 +113,54 @@
 		c= document.getElementById('c').value;
 		b= parseFloat(b);
 		c= parseFloat(c);
-		h=Math.round(a/(b+1+(b*c)+c))*100/100;
+		h=Math.round((a/(b+1+(b*c)+c))*100)/100;
 		document.getElementById('resultado 1'). innerHTML=h+' hombres';
-		m=Math.round(b*h)*100/100;
+		m=Math.round((b*h)*100)/100;
 		document.getElementById('resultado 2'). innerHTML=m+' mujeres';
-		n=Math.round(c*(m+h))*100/100;
+		n=Math.round((c*(m+h))*100)/100;
 		document.getElementById('resultado 3'). innerHTML=n+' niños';
 		}
-
+		calcular();
 		</script>
 
-		<div style=" padding:10px; background-color:green;">
+		<div style=" padding:10px; background-color:#81BEF7">
 			<center>
 					<b>
 						<H2>
-							php
+							<u>php</u>
+						</H2>
+						<H3>
 							
-							<div style=" padding:10px; background-color:lightpink;">
+							<div style=" padding:10px; background-color:#CEE3F6;">
 
 								<?php
-									if(!isset($_GET['a'])) $_GET['a']=102;
-									if(!isset($_GET['b'])) $_GET['b']=2;
-									if(!isset($_GET['c'])) $_GET['c']=1;
+									
 									$a=$_GET['a'];
 									$b=$_GET['b'];
 									$c=$_GET['c'];
 									$h= round($a/($b+1+($c*$b)+$c),2);
 									echo $h." hombres <br>";
+								?>
+							</div>
+							<div style=" padding:10px; background-color:#81BEF7">
+							</div>
+							<div style=" padding:10px; background-color:#CEE3F6;">
+								<?php
 									$m= round($h*$b,2);
 									echo $m." mujeres <br>";
+								?>
+							</div>
+							<div style=" padding:10px; background-color:#81BEF7">
+							</div>
+							<div style=" padding:10px; background-color:#CEE3F6">
+								<?php
 									$n= round($c*($h+$m),2);
 									echo $n." niños"
 								?>
 							</div>
-						</H2>
+						</H3>
 					</b>
 			</center>
-							
 		</div>
-		<div> 
-		<center><H2>PROBLEMAS</H2></center>
-		<center>
-		<a href="lata_refresco.php"> <font color="black">LATA_REFRESCO</a><br/>	
-		<a href="cesped.php"> <font color="black">cesped</a><br/>	
-		<a href="volumen.php"> <font color="black">4_volumen</a><br/>
-		</center>
-
-
-		</div>
-</body>
+	</body>
 </html>
